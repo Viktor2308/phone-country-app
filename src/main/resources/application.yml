@@ -1,0 +1,31 @@
+server:
+  port: 8088
+
+spring:
+  application:
+   name: phone-country-app
+  datasource:
+    url: ${APP_DB_URL}
+    username: ${APP_DB_USERNAME}
+    password: ${APP_DB_PASSWORD}
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: app-pool
+      idle-timeout: ${DB_IDLE_TIMEOUT:10000}
+      minimum-idle: ${DB_MINIMUM_IDLE:0}
+      maximum-pool-size: ${DB_MAXIMUM_POOL_SIZE:10}
+      data-source-properties:
+        ApplicationName: ${spring.application.name}
+  jpa:
+    properties:
+      hibernate:
+        default_schema: phone_country_app
+    show-sql: false
+
+  liquibase:
+    change-log: /db/changelog/db.changelog-master.yml
+    liquibase-schema: public
+    default-schema: phone_country_app
+
+wiki:
+  url: ${WIKI_URL:https://en.wikipedia.org/wiki/List_of_country_calling_codes#Alphabetical_order}

@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/phone_country_app
+    username: phone_country_app
+    password: phone_country_app
+  liquibase:
+    change-log: /db/changelog/db.changelog-master.yml
+
+
+

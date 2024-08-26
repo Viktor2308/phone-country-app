@@ -1,0 +1,36 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres:15.2-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: phone_country_app
+      POSTGRES_PASSWORD: phone_country_app
+      POSTGRES_DB: phone_country_app
+    volumes:
+      - ./temp/pgdata:/var/lib/postgresql/data
+      - ./temp/scripts:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres_user -d postgres_db" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  app:
+    container_name: phone-country-app
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8088:8088"
+    environment:
+      APP_DB_URL: jdbc:postgresql://postgres:5432/phone_country_app
+      APP_DB_USERNAME: phone_country_app
+      APP_DB_PASSWORD: phone_country_app
+      WIKI_URL: https://en.wikipedia.org/wiki/List_of_country_calling_codes#Alphabetical_order
+    depends_on:
+      - postgres
+    restart: unless-stopped

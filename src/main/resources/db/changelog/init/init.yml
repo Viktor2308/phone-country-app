@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/init/init.yml
+
+  - changeSet:
+      id: init
+      author: Viktor D
+      comment: Create tables
+      changes:
+        - sqlFile:
+            path: init.sql
+            relativeToChangelogFile: true
+      rollback:
+        - sqlFile:
+            path: rollback_init.sql
+            relativeToChangelogFile: true

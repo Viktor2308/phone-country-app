@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Identifier By Phone Number</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="mainForm">
+    <h1 class="title">Country Identifier By Phone Number</h1>
+    <form class="phoneForm" id="phoneForm">
+        <label for="phoneNumber">Enter phone number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" placeholder="1234567890 (10-15 digits, numbers only)" required>
+        <button type="submit">Find Country</button>
+    </form>
+    <div id="result">
+        <p id="countryName"></p>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
