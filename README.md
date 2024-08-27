@@ -20,7 +20,7 @@ git, Java 17, maven, docker
 - Clone the repository using Git
 - Build the JAR File: mvn clean package
 - Run Docker Compose: docker-compose up --build
-- Access the Application: http://localhost:8088 (Note: An active internet connection is required as the database is populated automatically at startup.)
+- Access the Application: http://localhost:8088/index.html (Note: An active internet connection is required as the database is populated automatically at startup.)
 - Stop the Containers: docker-compose down
 
 
